@@ -1,5 +1,5 @@
 {
-  "name": "mern-infrastructure",
+  "name": "WeatherApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -42,5 +42,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "@svgr/babel-plugin-transform-svg-component": "^8.0.0",
+    "babel-plugin-inline-react-svg": "^2.0.2"
+  }
 }
