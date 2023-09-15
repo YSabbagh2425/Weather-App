@@ -15,12 +15,12 @@ class App extends React.Component {
   state = {
     city: undefined,
 
-    // days contains objects with the following properties:
-    // date, weather_desc, icon, temp
+    // Days contains objects with the following properties:
+    // Date, weather_desc, icon, temp
     days: new Array(5)
   };
 
-  // creates the day objects and updates the state
+  // Creates the day objects and updates the state
   updateState = data => {
     const city = data.city.name;
     const days = [];
@@ -41,10 +41,11 @@ class App extends React.Component {
     });
   };
 
-  // tries to make an API call with the given city name and triggers state update
+  // Tries to make an API call with the given city name and triggers state update
   makeApiCall = async city => {
+    const APIKEY = process.env.REACT_APP_APIKEY;
     const api_data = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=3a36f36f04a3e3460c688e079548c2a9`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${APIKEY}`
     ).then(resp => resp.json());
 
     if (api_data.cod === '200') {
@@ -53,8 +54,8 @@ class App extends React.Component {
     } else return false;
   };
 
-  // returns array with Indices of the next five days in the list
-  // from the API data (every day at 12:00 pm)
+  // Returns array with Indices of the next five days in the list
+  // From the API data (every day at 12:00 pm)
   getDayIndices = data => {
     let dayIndices = [];
     dayIndices.push(0);
@@ -87,9 +88,8 @@ class App extends React.Component {
     };
 
     return (
-      <div className='App'>
+      <div className='App'> Weather App
         <header className='App-header'>
-          Weather App
           <MainWeatherWindow data={this.state.days[0]} city={this.state.city}>
             <CityInput city={this.state.city} makeApiCall={this.makeApiCall.bind(this)} />
             <WeatherBoxes />
