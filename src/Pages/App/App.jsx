@@ -14,7 +14,6 @@ import WeatherBox from '../../Components/WeatherBox/WeatherBox';
 class App extends React.Component {
   state = {
     city: undefined,
-
     // Days contains objects with the following properties:
     // Date, weather_desc, icon, temp
     days: new Array(5)
